@@ -2,7 +2,7 @@
 
 pkgname=('deepin-wine5' 'deepin-wine5-i386')
 pkgver=5.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Wine5"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
