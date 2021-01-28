@@ -1,0 +1,12 @@
+[Unit]
+Description=A RSS subscribe bot for telegram
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+Restart=on-abort
+ExecStart=/usr/bin/flowerss-bot -d %h/.config/flowerss-bot
+
+[Install]
+WantedBy=default.target

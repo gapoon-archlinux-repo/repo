@@ -1,0 +1,38 @@
+#!/bin/bash
+
+load_selector() {
+      /opt/clash-yangon/request/load_proxy $1
+}
+
+save_selector() {
+      /opt/clash-yangon/request/save_proxy $1
+}
+
+
+cmd="${0##*/}"
+username_or_homepath=$1
+
+# Parse clash option
+clash_args+=`cat /etc/clash-yangon.conf|sed 's/\([[:space:]]#\|^#\).*//g' | tr '\n' ' '`
+deliver_position=1
+for args in ${@}; do [[ "${args}" == "--" ]] && break || let 'deliver_position+=1'; done
+clash_args+=" ${@:$((deliver_position + 1 ))}"
+
+
+# Resolve action and home path of user
+if [[ ! $username_or_homepath ]]; then
+      [[ $SUDO_USER ]] && username_or_homepath=$SUDO_USER || username_or_homepath=$USER
+fi
+if [[ -d "${username_or_homepath}" ]]; then
+      user_home_path="$username_or_homepath"
+else
+      user_home_path=`cat /etc/passwd|grep ${username_or_homepath}|awk -F: '{print $6}'`
+fi
+
+# systemd unit control
+if [[ "${cmd%%-*}" == 'start' ]]; then
+      load_selector $user_home_path &
+      clash -d $user_home_path/.config/clash ${clash_args[@]}
+else
+      [[ "${cmd%%-*}" == "stop" ]]&&save_selector $user_home_path
+fi

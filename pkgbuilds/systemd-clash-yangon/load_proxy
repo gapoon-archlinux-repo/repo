@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+
+# -*- coding:utf-8 -*-
+import json
+from sys import argv
+from requests import put
+from time import sleep
+
+
+def main(home_path):
+    conf_path = "%s/.config/last_select" % (home_path)
+    print('Loading selector from %s' % conf_path)
+    try:
+        conf_file = open(conf_path,
+                         'r',
+                         encoding='utf-8')
+        select_dic = json.load(conf_file)
+        for curr_group in select_dic:
+            print('%s: %s' % (curr_group, select_dic[curr_group]))
+            put('http://127.0.0.1:9090/proxies/%s' % curr_group,
+                data=json.dumps(dict(name=select_dic[curr_group])))
+    except (FileExistsError, FileNotFoundError):
+        print('File Error, retring in 4 seconds')
+        return False
+    except (ConnectionError):
+        print('ConnectionError: clash maybe not run')
+        return True
+    except:
+        print('error')
+        return True
+
+
+if (__name__ == '__main__'):
+    try:
+        is_fail = True
+        while(is_fail):
+            sleep(4)
+            is_fail = main(argv[1])
+    except IndexError:
+        print('IndexError: No user home path founded')

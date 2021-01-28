@@ -1,0 +1,33 @@
+pkgname=systemd-clash-yangon
+pkgver=0.3.2
+pkgrel=1
+pdgdesc="A unit of systemd for clash"
+arch=('any')
+depends=('python' 'python-requests')
+source=("clash-yangon"
+        "clash-yangon-user.service"
+        "clash-yangon.conf"
+        "clash-yangon.service"
+        "load_proxy"
+        "save_proxy")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+install='systemd-clash-yangon.install'
+
+
+package() {
+    mkdir -p "${pkgdir}/opt/clash-yangon/request/"
+    mkdir -p "${pkgdir}/usr/bin/"
+    mkdir -p "${pkgdir}/etc"
+    install -Dm755 ${srcdir}/{load,save}_proxy "${pkgdir}/opt/clash-yangon/request/"
+    install -Dm755 "${srcdir}/clash-yangon" "${pkgdir}/opt/clash-yangon/clash-yangon"
+    ln -s "../../opt/clash-yangon/clash-yangon" "${pkgdir}/usr/bin/start-clash"
+    ln -s "../../opt/clash-yangon/clash-yangon" "${pkgdir}/usr/bin/stop-clash"
+    install -Dm644 "${srcdir}/clash-yangon-user.service" "${pkgdir}/usr/lib/systemd/user/clash-yangon.service"
+    install -Dm644 "${srcdir}/clash-yangon.service" "${pkgdir}/usr/lib/systemd/system/clash-yangon@.service"
+    install -Dm644 "${srcdir}/clash-yangon.conf" "${pkgdir}/etc/"
+}

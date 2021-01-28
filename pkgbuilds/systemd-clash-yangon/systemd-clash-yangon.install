@@ -1,0 +1,8 @@
+post_install(){
+  post_upgrade
+}
+post_upgrade(){
+    cat << EOF
+    For more information please visit: https://ghs.gapoon.me/clash-yangon
+EOF
+}

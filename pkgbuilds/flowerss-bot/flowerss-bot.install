@@ -1,0 +1,9 @@
+post_install(){
+    post_upgrade
+}
+post_upgrade(){
+    cat << EOF
+    Sample configure is placed in "/etc/flowerss-bot/config.yml.sample".
+    For more information please visit https://flowerss-bot.now.sh/#/
+EOF
+}

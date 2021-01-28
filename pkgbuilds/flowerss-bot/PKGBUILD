@@ -1,0 +1,42 @@
+# Maintainer: yangon99 <yangon99_all@outlook.com>
+
+pkgname=flowerss-bot
+pkgver=0.8.3
+pkgrel=2
+pkgdesc="A telegram bot for rss reader."
+arch=('x86_64')
+url="https://github.com/indes/flowerss-bot/tree/master"
+license=('MIT')
+depends=('glibc')
+optdepends=('mariadb: use mariadb as the robot database')
+makedepends=('go' 'git')
+install=$pkgname.install
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/indes/flowerss-bot/archive/v${pkgver}.tar.gz"
+	"flowerss-bot.service")
+sha512sums=('SKIP'
+            'SKIP')
+
+build() {
+    cd ${srcdir}/${pkgname}-${pkgver}
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go build -trimpath -ldflags "-X github.com/indes/flowerss-bot/constant.version=${pkgver}"  -mod=readonly
+    #make build
+}
+
+check() {
+    cd ${srcdir}/${pkgname}-${pkgver}
+#    go test github.com/indes/flowerss-bot/...
+}
+
+package() {
+    cd ${srcdir}/${pkgname}-${pkgver}
+    install -Dm755 flowerss-bot "${pkgdir}/usr/bin/flowerss-bot"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 config.yml.sample "${pkgdir}/etc/flowerss-bot/config.yml.sample"
+    install -Dm644 commands.txt "${pkgdir}/etc/flowerss-bot/commands.txt"
+    install -Dm644 ${srcdir}/flowerss-bot.service "${pkgdir}/usr/lib/systemd/user/flowerss-bot.service"
+}
