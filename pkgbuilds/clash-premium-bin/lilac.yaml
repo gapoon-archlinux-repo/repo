@@ -1,0 +1,15 @@
+maintainers:
+  - github: yangon99
+    email: yangon99_all@outlook.com
+build_prefix: extra-x86_64
+
+pre_build: aur_pre_build
+
+post_build: aur_post_build
+
+update_on:
+  - source: cmd
+    cmd : '''curl -s \
+		-H "Accept: application/vnd.github.v3+json" \
+		https://api.github.com/repos/Dreamacro/clash/releases/tags/premium \
+		|grep -E "Premium .{10}"|awk  -F"Premium |\"" '{print $5}' '''
