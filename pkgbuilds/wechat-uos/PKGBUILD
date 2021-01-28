@@ -6,7 +6,7 @@
 pkgname=wechat-uos
 pkgver=2.0.0
 epoch=2
-pkgrel=11451419
+pkgrel=11451420
 pkgdesc="UOS专业版微信 (迫真魔改版)"
 arch=(x86_64)
 url=https://www.chinauos.com/resource/download-professional
