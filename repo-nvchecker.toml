@@ -5,9 +5,9 @@ newver = "new_ver.json"
 [clash-premium-bin]
 source = "cmd"
 cmd = '''curl -s \
-		-H "Accept: application/vnd.github.v3+json" \
-		https://api.github.com/repos/Dreamacro/clash/releases/tags/premium \
-		|grep -E "Premium .{10}"|awk  -F"Premium |\"" '{print $5}' '''
+	-H "Accept: application/vnd.github.v3+json" \
+	https://api.github.com/repos/Dreamacro/clash/releases/tags/premium \
+	|grep -E "Premium .{10}"|awk  -F"Premium |\"" '{print $5}' '''
 
 [deepin-wine-qq]
 source = "aur"
