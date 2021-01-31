@@ -8,7 +8,8 @@ pre_build: aur_pre_build
 post_build: aur_post_build
 
 update_on:
-  - cmd: |
+  - source: cmd
+    cmd: |
       curl -s \
       -H "Accept: application/vnd.github.v3+json" \
       https://api.github.com/repos/Dreamacro/clash/releases/tags/premium \
