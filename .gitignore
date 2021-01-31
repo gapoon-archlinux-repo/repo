@@ -1,5 +1,6 @@
 old_ver.json*
 new_ver.json
 pkgbuilds/chromium-vaapi
-
+!pkgbuilds/*/lilac.yaml
+!pkgbuilds/*/lilac.py
 pkgbuilds/*/**
