@@ -1,8 +1,6 @@
 # Maintainer: yangon99 <yangon99_all@outlook.com>
 
-pkgname=flowerss-bot
-pkgver=0.8.3
-pkgrel=2
+pkgname=flowerss-bot-git
 pkgdesc="A telegram bot for rss reader."
 arch=('x86_64')
 url="https://github.com/indes/flowerss-bot/tree/master"
@@ -11,10 +9,10 @@ depends=('glibc')
 optdepends=('mariadb: use mariadb as the robot database')
 makedepends=('go' 'git')
 install=$pkgname.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/indes/flowerss-bot/archive/v${pkgver}.tar.gz"
+source=("${pkgname}::git+https://github.com/yangon99/flowerss-bot.git"
 	"flowerss-bot.service")
 sha512sums=('SKIP'
-            'SKIP')
+            'c5e2a420097cf577b43dd7d832465e12607e45ba68fffc7eb260d2321b66e03e7b55c366abda70b61a46000309252cfe37fa236a4d576c4317f491e8ccb30f19')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
