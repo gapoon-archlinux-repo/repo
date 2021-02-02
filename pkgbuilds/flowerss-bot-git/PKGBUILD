@@ -3,6 +3,8 @@
 pkgname=flowerss-bot-git
 pkgdesc="A telegram bot for rss reader."
 arch=('x86_64')
+pkgver=0.8.3.r24.g6ff271b
+pkgrel=1
 url="https://github.com/indes/flowerss-bot/tree/master"
 license=('MIT')
 depends=('glibc')
@@ -14,8 +16,14 @@ source=("${pkgname}::git+https://github.com/yangon99/flowerss-bot.git"
 sha512sums=('SKIP'
             'c5e2a420097cf577b43dd7d832465e12607e45ba68fffc7eb260d2321b66e03e7b55c366abda70b61a46000309252cfe37fa236a4d576c4317f491e8ccb30f19')
 
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+}
+
 build() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -26,12 +34,13 @@ build() {
 }
 
 check() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}
+#    go test github.com/yangon99/flowerss-bot/bot ./config ./model
 #    go test github.com/indes/flowerss-bot/...
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}
     install -Dm755 flowerss-bot "${pkgdir}/usr/bin/flowerss-bot"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 config.yml.sample "${pkgdir}/etc/flowerss-bot/config.yml.sample"
