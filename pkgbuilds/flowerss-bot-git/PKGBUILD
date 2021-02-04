@@ -24,12 +24,8 @@ pkgver() {
 
 build() {
     cd ${srcdir}/${pkgname}
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -trimpath -ldflags "-X github.com/indes/flowerss-bot/constant.version=${pkgver}"  -mod=readonly
+    go build -trimpath -mod=readonly -ldflags "-X \"github.com/indes/flowerss-bot/config.commit=$(git rev-parse --short HEAD)\" -X \"github.com/indes/flowerss-bot/config.date=$(date)\" -X \"github.com/indes/flowerss-bot/config.version=${pkgver}\""
+
     #make build
 }
 
