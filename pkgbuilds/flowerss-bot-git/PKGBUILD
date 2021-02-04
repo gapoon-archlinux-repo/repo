@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd ${srcdir}/${pkgname}
-    go build -trimpath -mod=readonly -ldflags "-X \"github.com/indes/flowerss-bot/config.commit=$(git rev-parse --short HEAD)\" -X \"github.com/indes/flowerss-bot/config.date=$(date)\" -X \"github.com/indes/flowerss-bot/config.version=${pkgver}\""
+    go build -trimpath -mod=readonly -ldflags "-X \"github.com/yangon99/flowerss-bot/config.commit=$(git rev-parse --short HEAD)\" -X \"github.com/yangon99/flowerss-bot/config.date=$(date)\" -X \"github.com/yangon99/flowerss-bot/config.version=${pkgver}\""
 
     #make build
 }
