@@ -1,8 +1,9 @@
 old_ver.json*
 new_ver.json
-#pkgbuilds/chromium-vaapi
+pkgbuilds/chromium-vaapi
 pkgbuilds/*/*.log
 pkgbuilds/*/*.tar*
 pkgbuilds/*/*.deb
 pkgbuilds/*/*.exe
 pkgbuilds/*/src
+pkgbuilds/*/*.gz
