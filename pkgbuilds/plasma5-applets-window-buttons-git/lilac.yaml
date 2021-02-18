@@ -12,3 +12,6 @@ update_on:
     github: psifidotos/applet-window-buttons
   - source: aur
     aur: plasma5-applets-window-buttons-git
+  - alias: plasma-workspace
+  - source: manual
+    manual: 7
