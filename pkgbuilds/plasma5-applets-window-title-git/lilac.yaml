@@ -3,6 +3,9 @@ maintainers:
     email: yangon99_all@outlook.com
 build_prefix: extra-x86_64
 
+repo_depends:
+  - plasma-workspace
+
 pre_build: aur_pre_build
 
 post_build: aur_post_build
@@ -12,3 +15,5 @@ update_on:
     github: psifidotos/applet-window-title
   - source: aur
     aur: plasma5-applets-window-title-git
+  - source: archpkg
+    archpkg: plasma-workspace
