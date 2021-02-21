@@ -14,3 +14,5 @@ update_on:
       -H "Accept: application/vnd.github.v3+json" \
       https://api.github.com/repos/Dreamacro/clash/releases/tags/premium \
       |grep -E "Premium .{10}"|awk  -F"Premium |\"" '{print $5}'
+  - source: aur
+    aur: clash-premium-bin
