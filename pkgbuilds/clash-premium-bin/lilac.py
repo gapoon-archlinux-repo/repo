@@ -9,3 +9,4 @@ def pre_build():
 
 def post_build():
     aur_post_build()
+    update_aur_repo()
