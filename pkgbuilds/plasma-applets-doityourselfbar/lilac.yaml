@@ -7,6 +7,7 @@ pre_build: aur_pre_build
 
 update_on:
   - source: github
-    github: use_max_tag
+    github: wsdfhjxc/do-it-yourself-bar
+    use_max_tag: true
   - source: aur
     aur: mpv-mpris
