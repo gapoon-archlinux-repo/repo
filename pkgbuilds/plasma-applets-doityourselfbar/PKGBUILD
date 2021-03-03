@@ -3,7 +3,7 @@
 _gitname=do-it-yourself-bar
 pkgname=plasma-applets-doityourselfbar
 pkgver=1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="KDE Plasma panel applet for creating text-based widgets"
 arch=("x86_64")
 url="https://github.com/wsdfhjxc/${_gitname}"
