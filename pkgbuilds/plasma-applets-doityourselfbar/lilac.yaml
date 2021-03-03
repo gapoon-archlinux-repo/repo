@@ -10,4 +10,6 @@ update_on:
     github: wsdfhjxc/do-it-yourself-bar
     use_max_tag: true
   - source: aur
-    aur: mpv-mpris
+    aur: plasma-applets-doityourselfbar
+  - source: manual
+    manual: 1
