@@ -13,6 +13,6 @@ update_on:
       curl -s \
       -H "Accept: application/vnd.github.v3+json" \
       https://api.github.com/repos/Dreamacro/clash/releases/tags/premium \
-      |grep -E "Premium .{10}"|awk  -F"Premium |\"" '{print $5}'
+      |grep -E "\"clash-linux-amd64-.{10}.gz"|awk -F"-|.gz" '{print $4}'
   - source: aur
     aur: clash-premium-bin
