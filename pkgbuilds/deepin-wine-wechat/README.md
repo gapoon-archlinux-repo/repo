@@ -1,21 +1,21 @@
 在Archlinux及衍生发行版上运行微信(WeChat)
-=======
+========
 
 <p align="center">
   <a href="https://travis-ci.org/countstarlight/deepin-wine-wechat-arch">
-    <img src="https://travis-ci.org/countstarlight/deepin-wine-wechat-arch.svg?branch=master" alt="Build Status">
+    <img src="https://img.shields.io/travis/countstarlight/deepin-wine-wechat-arch?&logo=travis&style=flat-square" alt="Build Status">
   </a>
   <a href="https://pc.weixin.qq.com/">
-    <img src="https://img.shields.io/badge/WeChat-3.1.0.72-blue.svg" alt="WeChat Version">
+    <img src="https://img.shields.io/badge/WeChat-3.2.1.127-blue?style=flat-square&logo=wechat" alt="WeChat Version">
   </a>
   <a href="https://aur.archlinux.org/packages/deepin-wine-wechat/">
-    <img src="https://img.shields.io/aur/version/deepin-wine-wechat.svg" alt="AUR Version">
+    <img src="https://img.shields.io/aur/version/deepin-wine-wechat?label=AUR&logo=arch-linux&style=flat-square" alt="AUR Version">
   </a>
   <a href="https://github.com/countstarlight/deepin-wine-wechat-arch/releases">
-    <img src="https://img.shields.io/github/downloads/countstarlight/deepin-wine-wechat-arch/total.svg" alt="GitHub Release">
+    <img src="https://img.shields.io/github/downloads/countstarlight/deepin-wine-wechat-arch/total?logo=github&style=flat-square" alt="GitHub Release">
   </a>
   <a href="https://github.com/countstarlight/deepin-wine-wechat-arch/issues">
-    <img src="https://img.shields.io/github/issues/countstarlight/deepin-wine-wechat-arch.svg" alt="GitHub Issues">
+    <img src="https://img.shields.io/github/issues/countstarlight/deepin-wine-wechat-arch?logo=github&style=flat-square" alt="GitHub Issues">
   </a>
 </p>
 
@@ -67,7 +67,7 @@ Deepin打包的微信容器(`com.qq.weixin.deepin`)移植到Archlinux，不依�
 
 ### 从AUR安装
 
-已添加到AUR [deepin-wine-wechat](https://aur.archlinux.org/packages/deepin-wine-wechat/)，可使用 `yay` 或 `yaourt` 安装:
+已添加到 AUR [deepin-wine-wechat](https://aur.archlinux.org/packages/deepin-wine-wechat/)，可使用 `yay` 或 `yaourt` 安装:
 
 ```shell
 yay -S deepin-wine-wechat
@@ -112,24 +112,17 @@ EXEC_PATH="c:/Program Files/Tencent/WeChat/WeChat.exe"
 
 ## 设置
 
-> dpi，目录映射等可以在 `winecfg` 进行设置
-
-如果使用默认的 `wine`，打开 `winecfg` 的命令为：
+dpi，目录映射等可以在 `winecfg` 进行设置，打开 `winecfg` 的命令为：
 
 ```bash
-env WINEPREFIX="$HOME/.deepinwine/Deepin-WeChat" winecfg
-```
-
-如果已经[切换到 `deepin-wine`](#切换到-deepin-wine)，打开 `winecfg` 的命令为：
-
-```bash
-env WINEPREFIX="$HOME/.deepinwine/Deepin-WeChat" deepin-wine5 winecfg
+/opt/apps/com.qq.weixin.deepin/files/run.sh winecfg
 ```
 
 ## 兼容性记录
 
 |   微信    |  wine   |   兼容性   |                             备注                             | deepin-wine | 兼容性 |                             备注                             |
 | :-------: | :-----: | :--------: | :----------------------------------------------------------: | :---------: | :----: | :----------------------------------------------------------: |
+| 3.2.1.127 |   6.5   |    部分    |                                                              |  5.0.16-1   |  支持  |                                                              |
 | 3.1.0.72  |   6.0   |    部分    | 截图功能不可用：[#73](https://github.com/countstarlight/deepin-wine-wechat-arch/issues/73) |  5.0.16-1   |  支持  |                                                              |
 | 3.1.0.41  |  5.22   |    部分    | 截图功能不可用：[#73](https://github.com/countstarlight/deepin-wine-wechat-arch/issues/73) |  5.0.16-1   |  支持  |                                                              |
 | 3.0.0.57  |  5.22   | **不支持** | 微信安装程序不能启动：[#92](https://github.com/countstarlight/deepin-wine-wechat-arch/issues/92) |  5.0.16-1   |  支持  |                                                              |
@@ -254,6 +247,7 @@ bash $HOME/.deepinwine/deepin-wine-helper/sendkeys.sh w wechat 4
 <details open>
 <summary>2021</summary>
 
+* 2021-04-02 WeChat-3.2.1.127
 * 2021-01-29 WeChat-3.1.0.72
 
 </details>
