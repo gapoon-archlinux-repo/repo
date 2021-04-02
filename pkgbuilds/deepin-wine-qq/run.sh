@@ -35,7 +35,7 @@ extract_archive()
 BOTTLENAME="Deepin-QQ"
 APPVER="9.3.2deepin20"
 WINEPREFIX="$HOME/.deepinwine/$BOTTLENAME"
-QQ_VER="9.4.3.27712"
+QQ_VER="9.4.5.27743"
 EXEC_PATH="c:/Program Files/Tencent/QQ/Bin/QQ.exe"
 START_SHELL_PATH="$HOME/.deepinwine/deepin-wine-helper/run_v3.sh"
 QQ_INSTALLER="PCQQ2021"
@@ -87,6 +87,15 @@ SwitchToDeepinWine()
     exit 0
 }
 
+OpenWinecfg()
+{
+    if [ -f "$WINEPREFIX/deepin" ]; then
+        env WINEPREFIX=$WINEPREFIX deepin-wine5 winecfg
+    else
+        env WINEPREFIX=$WINEPREFIX winecfg
+    fi
+}
+
 Run()
 {
     extract_archive "$ARCHIVE_FILE_DIR/helper_archive.7z" "$ARCHIVE_FILE_DIR/helper_archive.md5sum" "$SPECIFY_SHELL_DIR"
@@ -110,6 +119,7 @@ Run()
 HelpApp()
 {
 	echo " Extra Commands:"
+	echo " winecfg        Open winecfg"
 	echo " -d/--deepin    Switch to 'deepin-wine'"
 	echo " -h/--help      Show program help info"
 }
@@ -130,6 +140,9 @@ if [ -z $1 ]; then
 	exit 0
 fi
 case $1 in
+	"winecfg")
+		OpenWinecfg
+		;;
 	"-d" | "--deepin")
 		SwitchToDeepinWine
 		;;

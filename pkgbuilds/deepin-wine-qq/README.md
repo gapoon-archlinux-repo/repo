@@ -3,23 +3,23 @@
 
 <p align="center">
   <a href="https://travis-ci.org/countstarlight/deepin-wine-qq-arch">
-    <img src="https://travis-ci.org/countstarlight/deepin-wine-qq-arch.svg?branch=master" alt="Build Status">
+    <img src="https://img.shields.io/travis/countstarlight/deepin-wine-qq-arch?&logo=travis&style=flat-square" alt="Build Status">
   </a>
   <a href="https://im.qq.com/download/">
-    <img src="https://img.shields.io/badge/QQ-9.4.3.27712-blue.svg" alt="QQ Version">
+    <img src="https://img.shields.io/badge/QQ-9.4.5.27743-blue?style=flat-square&logo=tencent-qq" alt="QQ Version">
   </a>
   <a href="https://aur.archlinux.org/packages/deepin-wine-qq/">
-    <img src="https://img.shields.io/aur/version/deepin-wine-qq.svg" alt="AUR Version">
+    <img src="https://img.shields.io/aur/version/deepin-wine-qq?label=AUR&logo=arch-linux&style=flat-square" alt="AUR Version">
   </a>
   <a href="https://github.com/countstarlight/deepin-wine-qq-arch/releases">
-    <img src="https://img.shields.io/github/downloads/countstarlight/deepin-wine-qq-arch/total.svg" alt="GitHub Release">
+    <img src="https://img.shields.io/github/downloads/countstarlight/deepin-wine-qq-arch/total?logo=github&style=flat-square" alt="GitHub Release">
   </a>
   <a href="https://github.com/countstarlight/deepin-wine-qq-arch/issues">
-    <img src="https://img.shields.io/github/issues/countstarlight/deepin-wine-qq-arch.svg" alt="GitHub Issues">
+    <img src="https://img.shields.io/github/issues/countstarlight/deepin-wine-qq-arch?logo=github&style=flat-square" alt="GitHub Issues">
   </a>
 </p>
 
-Deepin 打包的 QQ 容器移植到 Archlinux，不依赖 `deepin-wine5`，包含定制的注册表配置，QQ 安装包替换为官方最新
+Deepin 打包的 QQ 容器(`com.qq.im.deepin`)移植到 Archlinux，不依赖 `deepin-wine`，包含定制的运行脚本，QQ 安装包替换为官方最新
 
 <!-- TOC -->
 
@@ -27,6 +27,7 @@ Deepin 打包的 QQ 容器移植到 Archlinux，不依赖 `deepin-wine5`，包�
     - [从AUR安装](#从aur安装)
     - [用安装包安装](#用安装包安装)
     - [本地打包安装](#本地打包安装)
+- [设置](#设置)
 - [兼容性记录](#兼容性记录)
 - [切换到 `deepin-wine`](#切换到-deepin-wine)
     - [自动切换(推荐)](#自动切换推荐)
@@ -109,10 +110,19 @@ EXEC_PATH="c:/Program Files/Tencent/QQ/Bin/QQ.exe"
 
 **NOTE: 前几次运行时可能会提示 "qq安全组件异常"，等一会再运行或重启一下系统**
 
+## 设置
+
+dpi，目录映射等可以在 `winecfg` 进行设置，打开 `winecfg` 的命令为：
+
+```bash
+/opt/apps/com.qq.im.deepin/files/run.sh winecfg
+```
+
 ## 兼容性记录
 
 |     QQ      |  wine  |   兼容性   |             备注             | deepin-wine | 兼容性 | 备注 |
 | :---------: | :----: | :--------: | :--------------------------: | :---------: | :----: | :--: |
+| 9.4.5.27743 |  6.5   |    部分    |                              |  5.0.16-1   |  支持  |      |
 | 9.4.3.27712 |  6.1   |    部分    | 部分字体显示为方框且性能较差 |  5.0.16-1   |  支持  |      |
 | 9.4.2.27666 |  6.0   |    部分    | 部分字体显示为方框且性能较差 |  5.0.16-1   |  支持  |      |
 | 9.4.2.27658 |  5.22  |    部分    | 部分字体显示为方框且性能较差 |  5.0.16-1   |  支持  |      |
@@ -136,7 +146,7 @@ EXEC_PATH="c:/Program Files/Tencent/QQ/Bin/QQ.exe"
 
 > 根据 [deepin-wine-wechat-arch#15](https://github.com/countstarlight/deepin-wine-wechat-arch/issues/15#issuecomment-515455845)，[deepin-wine-wechat-arch#27](https://github.com/countstarlight/deepin-wine-wechat-arch/issues/27)，由 [@feileb](https://github.com/feileb), [@violetbobo](https://github.com/violetbobo), [@HE7086](https://github.com/HE7086)提供的方法
 
-原版 `wine` 在 [DDE(Deepin Desktop Environment)](https://www.deepin.org/dde/) 上，有托盘图标无法响应鼠标事件([deepin-wine-tim-arch#21](https://github.com/countstarlight/deepin-wine-tim-arch/issues/21))的问题，且原版 `wine` 尚不能实现保存登录密码等功能，可以选择切换到 `deepin-wine5`。
+原版 `wine` 在 [DDE(Deepin Desktop Environment)](https://www.deepin.org/dde/) 上，有托盘图标无法响应鼠标事件([deepin-wine-tim-arch#21](https://github.com/countstarlight/deepin-wine-tim-arch/issues/21))的问题，且原版 `wine` 尚不能实现保存登录密码等功能，可以选择切换到 `deepin-wine`。
 
 **注意：切换前先确保 `deepin-wine` 支持**
 
@@ -154,7 +164,7 @@ EXEC_PATH="c:/Program Files/Tencent/QQ/Bin/QQ.exe"
 切换回 `wine`：
 
 ```bash
-rm ~/.deepinwine/Deepin-QQ/deepin
+rm $HOME/.deepinwine/Deepin-QQ/deepin
 ```
 
 如果要卸载自动安装的依赖：
@@ -206,19 +216,7 @@ QQ在本地保存的数据不会被删除，如保存在用户文档下的数据
 
 ### 高分辨率屏幕支持
 
-在 `winecfg` 的Graphics选项卡中修改dpi，如 修改为`192`
-
-对于 `wine`：
-
-```bash
-env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" winecfg
-```
-
-对于 `deepin-wine` ：
-
-```bash
-env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" deepin-wine5 winecfg
-```
+参照[设置](#设置)打开 `winecfg` ，在选项卡 `Graphics` 中修改dpi，如 修改为`192`
 
 ### GNOME 桌面上的悬浮窗口问题
 
@@ -245,6 +243,7 @@ env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" deepin-wine5 winecfg
 <details open>
 <summary>2021</summary>
 
+* 2021-04-02 QQ-9.4.5.27743
 * 2021-02-11 QQ-9.4.3.27712 9.3.2deepin20
 * 2021-02-08 QQ-9.4.3.27712
 * 2021-01-19 QQ-9.4.2.27666
@@ -284,4 +283,3 @@ env WINEPREFIX="$HOME/.deepinwine/Deepin-QQ" deepin-wine5 winecfg
 * 2017-12-31 QQ-8.9.6
 
 </details>
-
