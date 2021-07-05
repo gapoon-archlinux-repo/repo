@@ -35,7 +35,7 @@ extract_archive()
 BOTTLENAME="Deepin-WeChat"
 APPVER="3.2.1.154deepin8"
 WINEPREFIX="$HOME/.deepinwine/$BOTTLENAME"
-WECHAT_VER="3.2.1.154"
+WECHAT_VER="3.3.0.115"
 EXEC_PATH="c:/Program Files/Tencent/WeChat/WeChat.exe"
 START_SHELL_PATH="$HOME/.deepinwine/deepin-wine-helper/run_v3.sh"
 WECHAT_INSTALLER="WeChatSetup"
@@ -65,7 +65,7 @@ SwitchToDeepinWine()
             msg 1 "Need to install 'yay' or 'yaourt' first." >&2
             exit 1
         else
-            $PACKAGE_MANAGER="yaourt"
+            PACKAGE_MANAGER="yaourt"
         fi
     fi
     for p in ${DEEPIN_WINE_DEPENDS}; do
