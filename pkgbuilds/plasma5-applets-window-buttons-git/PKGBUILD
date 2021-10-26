@@ -3,7 +3,7 @@
 _gitname=applet-window-buttons
 pkgname=plasma5-applets-window-buttons-git
 pkgver=0.10.0.r1.gd317d2f
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma 5 applet in order to show window buttons in your panels"
 arch=(x86_64)
 url="https://github.com/psifidotos/${_gitname}"
