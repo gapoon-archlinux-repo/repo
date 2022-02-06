@@ -12,5 +12,5 @@ update_on:
     github: psifidotos/applet-window-buttons
   - source: aur
     aur: plasma5-applets-window-buttons-git
-  - source: archpkg
-    archpkg: plasma-workspace
+  # - source: archpkg
+  #   archpkg: plasma-workspace

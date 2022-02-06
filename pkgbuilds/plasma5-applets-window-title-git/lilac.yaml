@@ -12,5 +12,5 @@ update_on:
     github: psifidotos/applet-window-title
   - source: aur
     aur: plasma5-applets-window-title-git
-  - source: archpkg
-    archpkg: plasma-workspace
+  # - source: archpkg
+  #   archpkg: plasma-workspace
