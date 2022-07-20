@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=1.5.0.1.r0.gea2ea6b
+pkgver=1.5.0.2.r0.ga91bea3
 pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
