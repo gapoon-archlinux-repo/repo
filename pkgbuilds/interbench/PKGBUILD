@@ -3,7 +3,7 @@
 
 pkgname=interbench
 pkgver=0.31
-pkgrel=5
+pkgrel=6
 pkgdesc="Emulates and measures CPU scheduling latency and jitter"
 url="http://users.on.net/~ckolivas/interbench/"
 license=('GPLv2')
