@@ -2,7 +2,7 @@
 
 
 pkgname=kcm-colorful-git
-pkgrel=1
+pkgrel=2
 pkgver=1.0.5.r0.g411e8c9
 pkgdesc='Make your KDE plasma colorful'
 arch=('x86_64')
