@@ -3,7 +3,7 @@
 
 pkgname='unixbench'
 pkgver=5.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc='UnixBench is a simple benchmark whose purpose is to provide a  basic indicator of the performance of a Unix-like system.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 license=('GPL')
