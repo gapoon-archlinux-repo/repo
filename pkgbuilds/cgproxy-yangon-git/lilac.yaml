@@ -1,0 +1,8 @@
+maintainers:
+  - github: yangon99
+    email: yangon99_all@outlook.com
+build_prefix: multilib
+
+update_on:
+  - source: github
+    github: yangon99/cgproxy
