@@ -1,6 +1,6 @@
 # Maintainer: Fancy Zhang <springzfx@gmail.com>
 pkgname=cgproxy-yangon-git
-pkgver=r205.aaa628a
+pkgver=v0.19.r6.gf24ccf6
 pkgrel=1
 pkgdesc="A transparent proxy program powered by cgroup2 and tproxy"
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=('')
 makedepends=('cmake' 'nlohmann-json' 'git')
 depends=('libbpf'  'iproute2' 'which')
 provides=('cgproxy')
-conflicts=('cgproxy')
+conflicts=('cgproxy' 'cgproxy-git')
 
 source=("${pkgname}::git+https://github.com/yangon99/cgproxy#branch=master")
 md5sums=('SKIP')
