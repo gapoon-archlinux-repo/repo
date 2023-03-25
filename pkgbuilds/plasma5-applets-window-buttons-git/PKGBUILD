@@ -21,6 +21,9 @@ pkgver() {
 }
 
 prepare() {
+  pushd ${_gitname}
+  git pull origin pull/191/head:dumb_5.27_support
+  popd
   mkdir -p build
 }
 
