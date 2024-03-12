@@ -1,0 +1,30 @@
+# Maintainer: yangon99 <yangon99 at outlook dot com>
+
+_gitname=applet-window-title6
+_gitbranch=master
+pkgname=plasma6-applets-window-title-git
+pkgver=0.1.504e6c2.master
+pkgrel=1
+pkgdesc="Plasma 6 applet that shows the application title and icon for active window"
+arch=(x86_64)
+url="https://github.com/moodyhunter/${_gitname}"
+license=(GPL)
+depends=(plasma-workspace)
+makedepends=(git)
+conflicts=(plasma6-applets-window-title)
+provides=(plasma6-applets-window-title)
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${_gitname}
+  # git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo "0.1.$(git rev-parse --short HEAD).${_gitbranch}"
+}
+
+package() {
+  _pkgdir="$pkgdir/usr/share/plasma/plasmoids/org.kde.windowtitle"
+  mkdir -p "$_pkgdir"
+  cp -r applet-window-title6/* "$_pkgdir"
+  rm "$_pkgdir/README.md"
+}
