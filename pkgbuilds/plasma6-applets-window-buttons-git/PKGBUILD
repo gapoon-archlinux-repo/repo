@@ -1,0 +1,37 @@
+# Maintainer: yangon99 <yangon99 at outlook dot com>
+
+_gitname=applet-window-buttons6
+_gitbranch=master
+pkgname=plasma6-applets-window-buttons-git
+pkgver=0.1.a7b95da.master
+pkgrel=1
+pkgdesc="Plasma 6 applet in order to show window buttons in your panels"
+arch=(x86_64)
+url="https://github.com/moodyhunter/${_gitname}"
+license=(GPL)
+depends=(plasma-workspace)
+makedepends=(git extra-cmake-modules)
+conflicts=(plasma6-applets-window-buttons)
+provides=(plasma6-applets-window-buttons)
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${_gitname}
+  echo "0.1.$(git rev-parse --short HEAD).${_gitbranch}"
+}
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd build
+  cmake ../applet-window-buttons6 \
+    -DCMAKE_INSTALL_PREFIX=/usr
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir" install
+}
